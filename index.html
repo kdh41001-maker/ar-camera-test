@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#070b12" />
+    <title>Vision Overlay POC</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="camera-app">
+      <video id="camera" autoplay playsinline muted aria-label="Live camera preview"></video>
+      <canvas id="frame" hidden></canvas>
+
+      <section class="top-bar" aria-label="Application status">
+        <p class="eyebrow">AR + AI VISION</p>
+        <p id="status" class="status" role="status">Preparing camera…</p>
+      </section>
+
+      <section id="permission-panel" class="center-panel" hidden>
+        <div class="panel-icon" aria-hidden="true">◉</div>
+        <h1>Camera access required</h1>
+        <p>Allow camera access to test the live-preview capture pipeline.</p>
+        <button id="enable-camera" class="button primary">ENABLE CAMERA</button>
+      </section>
+
+      <section id="capture-overlay" class="capture-overlay" hidden aria-live="polite">
+        <img id="captured-image" alt="Captured camera frame" />
+        <div class="capture-card">
+          <p class="eyebrow">PHASE 1 CAPTURE</p>
+          <h2>Frame captured</h2>
+          <p>This frame is ready to send to the secure Vision API route in Phase 2.</p>
+          <button id="retake" class="button primary">CONTINUE CAMERA</button>
+        </div>
+      </section>
+
+      <section class="controls" aria-label="Camera controls">
+        <button id="switch-camera" class="icon-button" aria-label="Switch camera" title="Switch camera">↻</button>
+        <button id="capture" class="shutter" aria-label="Capture current frame"><span></span></button>
+        <button id="retry" class="icon-button" aria-label="Restart camera" title="Restart camera">⌁</button>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
